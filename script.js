@@ -3,7 +3,7 @@ let unit = document.querySelector(".unit");
 let feet = document.querySelector(".feet");
 let inches = document.querySelector(".inches");
 let result = document.querySelector(".result");
-let bmiStatus = document.querySelector(".BMIStatus");
+let BMIStatus = document.querySelector(".BMIStatus");
 
 function calculateBMI() {
   let convertedWeight = weight.value;
@@ -20,38 +20,25 @@ function calculateBMI() {
   console.log("total height in meters ", totalHeight);
 
   //=============BMI-Ratio======================================
-  let bmi = (weight.value / totalHeight ** 2).toFixed(2);
+  let bmi = (convertedWeight / totalHeight ** 2).toFixed(2);
   console.log(bmi);
-  console.log("result", result);
   result.textContent = bmi;
   
 
-  const status = "";
+  let status = "";
   if (bmi < 18.5) {
-    result = `underweight`;
+    status = `underweight`;
   } else if (18.5 <= bmi && bmi <= 24.9) {
-    result = `Healthy`;
+    status = `Healthy`;
   } else if (25 <= bmi && bmi <= 29.9) {
-    result = `Overweight`;
+    status = `Overweight`;
   } else if (30 <= bmi && bmi <= 34.9) {
-    result = `Obese`;
+    status = `Obese`;
   } else if (35 <= bmi) {
-    result = `Extremely obese`;
+    status = `Extremely obese`;
   }
 
+  console.log("result", result);
   BMIStatus.textContent = status;
- 
+
 }
-
-
-
-
-
-
-// function calculate(){
-//     console.log(weight.value);
-//     console.log(unit.value);
-//     console.log(feet.value)
-//     console.log(inches.value);
-
-// }
