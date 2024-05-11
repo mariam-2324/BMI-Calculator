@@ -1,4 +1,4 @@
-let weight = document.querySelector(".weigh");
+let weight = document.querySelector(".weight");
 let unit = document.querySelector(".unit");
 let feet = document.querySelector(".feet");
 let inches = document.querySelector(".inches");
@@ -7,7 +7,7 @@ let bmiStatus = document.querySelector(".BMIStatus");
 
 function calculateBMI() {
   let convertedWeight = weight.value;
-  let status;
+  console.log("weight.value", weight.value);
 
   // conversion of lbs into kg
   if (unit.value === "lbs") {
@@ -22,10 +22,11 @@ function calculateBMI() {
   //=============BMI-Ratio======================================
   let bmi = (weight.value / totalHeight ** 2).toFixed(2);
   console.log(bmi);
+  console.log("result", result);
   result.textContent = bmi;
   
 
-  const result = "";
+  const status = "";
   if (bmi < 18.5) {
     result = `underweight`;
   } else if (18.5 <= bmi && bmi <= 24.9) {
@@ -38,8 +39,8 @@ function calculateBMI() {
     result = `Extremely obese`;
   }
 
-  bmiStatus.textContent = result, 'result';
-  result.textContent = bmi, 'bmi';
+  BMIStatus.textContent = status;
+ 
 }
 
 
