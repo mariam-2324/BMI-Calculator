@@ -4,6 +4,7 @@ let feet = document.querySelector(".feet");
 let inches = document.querySelector(".inches");
 let result = document.querySelector(".result");
 let BMIStatus = document.querySelector(".BMIStatus");
+let lastValueSelector = document.querySelector(".lastValue")
 
 function calculateBMI() {
   let convertedWeight = weight.value;
@@ -22,6 +23,9 @@ function calculateBMI() {
   //=============BMI-Ratio======================================
   let bmi = (convertedWeight / totalHeight ** 2).toFixed(2);
   console.log(bmi);
+  //===========storing last BMI value on LOCAL storage(>>/application/localstorage)==================
+  localStorage.setItem("lastBMIvalue", bmi);
+  lastValueSelector.textContent = bmi
   result.textContent = bmi;
   
 
@@ -42,3 +46,20 @@ function calculateBMI() {
   BMIStatus.textContent = status;
 
 }
+//========function of staying last BMI calculation on web-page(browser)=================================
+function onPageLoad() {
+const _result = localStorage.getItem("lastBMIvalue");
+console.log("_result", _result);
+lastValueSelector.textContent = _result;
+const a = localStorage.getItem("array");
+console.log(JSON.parse(a));
+}
+
+//=====setting function of RESET-button(for removing last BMI-value)================================
+function resetBMI() {
+  localStorage.removeItem("lastBMIvalue");
+  lastValueSelector.textContent = "";
+
+
+}
+
